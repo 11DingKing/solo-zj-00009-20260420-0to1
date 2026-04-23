@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Plus, Edit2, Trash2, X, Calendar, ChevronRight, CheckCircle2, Circle } from 'lucide-react'
-import { WeeklyPlan, PlanDay, PlanDayExercise, Exercise, DAYS_OF_WEEK, CATEGORIES, UNITS } from '@/types'
+import { WeeklyPlan, Exercise, DAYS_OF_WEEK, CATEGORIES } from '@/types'
 import { plansApi, exercisesApi } from '@/services/api'
 
 interface PlanDayExerciseForm {

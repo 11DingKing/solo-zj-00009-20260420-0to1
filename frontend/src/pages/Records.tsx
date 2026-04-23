@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Plus, Edit2, Trash2, X, ClipboardList, Calendar as CalendarIcon, Clock, Dumbbell, ChevronLeft, ChevronRight } from 'lucide-react'
 import dayjs from 'dayjs'
-import { TrainingRecord, Exercise, CATEGORIES, UNITS } from '@/types'
-import { recordsApi, exercisesApi, plansApi } from '@/services/api'
+import { TrainingRecord, Exercise, CATEGORIES } from '@/types'
+import { recordsApi, exercisesApi } from '@/services/api'
 
 const Records: React.FC = () => {
   const [records, setRecords] = useState<TrainingRecord[]>([])
@@ -50,7 +50,6 @@ const Records: React.FC = () => {
 
   const handleEdit = (record: TrainingRecord) => {
     setEditingRecord(record)
-    const exercise = getExerciseById(record.exercise_id)
     setFormData({
       exercise_id: record.exercise_id,
       actual_sets: record.actual_sets,
