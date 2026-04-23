@@ -1,19 +1,19 @@
 import json
 from typing import Optional, Any
-import aioredis
+from redis.asyncio import Redis
 from .config import settings
 
 
 class RedisClient:
     def __init__(self):
-        self.redis: Optional[aioredis.Redis] = None
+        self.redis: Optional[Redis] = None
 
     async def init(self):
-        self.redis = aioredis.from_url(settings.REDIS_URL, decode_responses=True)
+        self.redis = Redis.from_url(settings.REDIS_URL, decode_responses=True)
 
     async def close(self):
         if self.redis:
-            await self.redis.close()
+            await self.redis.aclose()
 
     async def get(self, key: str) -> Optional[Any]:
         if not self.redis:
